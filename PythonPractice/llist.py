@@ -26,7 +26,20 @@ class LinkedList:
             temp = Node(data)
             temp.next = self.head
             self.head = temp
+        self.printList()
         
+    def insertAfter(self,pNode,data):
+        if pNode is not None:
+            temp = Node(data)
+            pNode.next = temp
+        self.printList()
+    
+    def insertTail(self,data):
+        curr = self.head
+        while curr.next is not None:
+            curr = curr.next
+        
+        curr.next = Node(data)
         self.printList()
                 
 if __name__=='__main__':
@@ -44,6 +57,8 @@ if __name__=='__main__':
     llist.printList()
     
     llist.insertFront(0)
+    llist.insertAfter(fourth,5)
+    llist.insertTail(6)
     
     
     
