@@ -124,6 +124,36 @@ void deleteNodeWithKey(NODE** head,int data)
     return;
 }
 
+void delNodeGivenPos(NODE** head, int pos)
+{
+    NODE* cur = *head;
+    int count = 0;
+    NODE* prevNode = NULL;
+    
+    if(cur == NULL)
+        return;
+    
+    if(pos == 0)
+    {
+        *head = cur->next;
+        free(cur);
+        return;
+    }
+    
+    while(count < (pos-1))
+    {
+        cur = cur->next;
+        count++;
+    }
+    
+    if (cur == NULL || cur->next == NULL)
+        return;
+    
+    NODE* nextNext = cur->next->next;
+    free(cur->next);
+    cur->next = nextNext;
+    return;
+}
 int main()
 {
     NODE *head = NULL;
@@ -152,11 +182,12 @@ int main()
     deleteNode(third);
     printList(head);
     
-    deleteNodeWithKey(&head,4);
-    deleteNodeWithKey(&head,6);
+    //deleteNodeWithKey(&head,4);
+    //deleteNodeWithKey(&head,6);
+    delNodeGivenPos(&head,0);
+    delNodeGivenPos(&head,3);
     printList(head);
     
 
     return 0;
 }
-
