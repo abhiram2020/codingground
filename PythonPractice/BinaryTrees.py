@@ -38,12 +38,20 @@ root2.right = node(3)
 root2.left.left = node(4)
 root2.left.right = node(5)
 
+root3 = node(1)
+root3.left = node(2)
+root3.right = node(3)
+root3.left.left = node(5)
+root3.left.right = node(4)
+
 print "Tree Size: ",treeSize(root1)
 
 if(identicalTrees(root1,root2)):
     print "Identical TREES"
 else:
     print "NON Identical TREES"
-    
 
-        
+if(identicalTrees(root3,root2)):
+    print "Identical TREES"
+else:
+    print "NON Identical TREES"
