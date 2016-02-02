@@ -50,6 +50,12 @@ def minDepth(node):
         else:
             return rdepth + 1
 
+def deleteTree(node):
+    if node is not None:
+        deleteTree(node.left)
+        deleteTree(node.right)
+        del node
+
 root1 = node(1)
 root1.left = node(2)
 root1.right = node(3)
@@ -83,3 +89,5 @@ else:
     
 print "MinDepth: ",minDepth(root3),"\nMaxDepth: ",maxDepth(root3)
 
+print "Deleting Tree"
+deleteTree(root3)
