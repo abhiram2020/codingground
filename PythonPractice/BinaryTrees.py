@@ -5,7 +5,37 @@ class node:
         self.data = data
         self.left = None
         self.right = None
+    
+    def deleteTree(self):
+        if self is not None:
+            del self
+        
+    def mirrorTree(self,node):
+        if node is None:
+            return
+        else:
+            self.mirrorTree(node.left)
+            self.mirrorTree(node.right)
+            (node.left,node.right) = (node.right,node.left)
+    
+def inOrderTrav(node):
+    if node is not None:
+        inOrderTrav(node.left)
+        print node.data
+        inOrderTrav(node.right)
+        
+def preOrderTrav(node):
+    if node is not None:
+        print node.data
+        preOrderTrav(node.left)
+        preOrderTrav(node.right)
 
+def postOrderTrav(node):
+    if node is not None:
+        postOrderTrav(node.left)
+        postOrderTrav(node.right)
+        print node.data
+        
 def treeSize(node):
     if node is None:
         return 0
@@ -50,11 +80,23 @@ def minDepth(node):
         else:
             return rdepth + 1
 
-def deleteTree(node):
-    if node is not None:
-        deleteTree(node.left)
-        deleteTree(node.right)
-        del node
+def printRoot2LeafPaths(node,paths,idx):
+    if node is None:
+        return
+    
+    paths[idx] = node.data
+    idx += 1
+
+    if node.left is None and node.right is None:
+        for i in range(0,idx):
+            print paths[i]
+        print "\n"
+    else:
+        printRoot2LeafPaths(node.left,paths,idx)
+        printRoot2LeafPaths(node.right,paths,idx)
+        
+        
+    
 
 root1 = node(1)
 root1.left = node(2)
@@ -89,5 +131,15 @@ else:
     
 print "MinDepth: ",minDepth(root3),"\nMaxDepth: ",maxDepth(root3)
 
-print "Deleting Tree"
-deleteTree(root3)
+print "Deleting Tree\n"
+root3.deleteTree()
+
+print "Mirror Tree \nBefore:"
+inOrderTrav(root2)
+root2.mirrorTree(root2)
+print "After:"
+inOrderTrav(root2)
+
+print "\nROOT to LEAF PATHS\n"
+paths = [0]*1000
+printRoot2LeafPaths(root1,paths,0)
