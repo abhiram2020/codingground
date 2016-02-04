@@ -80,7 +80,23 @@ def minDepth(node):
         else:
             return rdepth + 1
 
+def printRoot2LeafPaths(node,paths,idx):
+    if node is None:
+        return
+    
+    paths[idx] = node.data
+    idx += 1
 
+    if node.left is None and node.right is None:
+        for i in range(0,idx):
+            print paths[i]
+        print "\n"
+    else:
+        printRoot2LeafPaths(node.left,paths,idx)
+        printRoot2LeafPaths(node.right,paths,idx)
+        
+        
+    
 
 root1 = node(1)
 root1.left = node(2)
@@ -123,3 +139,10 @@ inOrderTrav(root2)
 root2.mirrorTree(root2)
 print "After:"
 inOrderTrav(root2)
+
+print "\nROOT to LEAF PATHS\n"
+paths = [0]*1000
+printRoot2LeafPaths(root1,paths,0)
+
+
+
