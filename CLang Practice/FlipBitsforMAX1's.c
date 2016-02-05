@@ -4,7 +4,6 @@
 void flipbits(int a[], int length)
 {
     int maxDiff = 0;
-	
 	int flipStartIndex = 0;
 	int flipEndIndex = 0;
 	
