@@ -23,7 +23,6 @@ int merge(int elem1,int elem2,int *id,int *sz,int *cnt)
 	// make smaller root point to larger one
     if(sz[i] < sz[j])
     {
-        
 		id[i] = j; 
 		sz[j] += sz[i]; 
 	}
@@ -41,7 +40,7 @@ int main()
     int set_id[length];
     int set_sz[length];
     int i;
-    int count = length;
+    int cnt = length;
     
     for(i = 0; i < length; i++)
     {
@@ -51,8 +50,12 @@ int main()
 
 	printf("Element 2 is in SET: %d\n",find(2,set_id,set_sz));
 	printf("Element 1 is in SET: %d\n",find(1,set_id,set_sz));
-	merge(2,3,set_id,set_sz,&count);
-	printf("Element 3 is in SET: %d ,#DISJOINT SETS: %d\n",find(3,set_id,set_sz),count);
-
+	merge(2,3,set_id,set_sz,&cnt);
+	printf("Element 3 is in SET: %d\n",find(3,set_id,set_sz));
+	
+	printf("COST is %d\n",(length - cnt) + 1);
+	
+	//printf("Union is in SET: %d\n",merge(1,4,set_id,set_sz));
+	
 	return 0;
 }
