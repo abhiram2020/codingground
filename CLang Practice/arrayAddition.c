@@ -46,8 +46,25 @@ void arrayaddition(int a[],int m,int b[],int n,int *result,int r_len)
         k--;
     }
     
-    return;
-    
+    if(carry != 0)
+    {
+        int newLen = r_len + 1;
+        int newResult[newLen];
+        for(int t = newLen;t > 0; t--)
+        {
+            newResult[t] = result[t-1];
+        }
+        newResult[0] = carry;
+        
+        for(int t = 0; t < newLen ; t++)
+        {
+            printf("%d",newResult[t]);
+        }
+        
+    }
+    for (k = 0; k < r_len; k++)
+         printf("%d",result[k]);
+         
 }
 
 
@@ -63,11 +80,6 @@ int main()
     memset(&c_len,0,c_len);
     
     arrayaddition(a,7,b,6,result,c_len);
-    
-    for(i = 0; i < c_len; i++)
-    {
-        printf("%d",result[i]);
-    }
     
     return 0;
 }
