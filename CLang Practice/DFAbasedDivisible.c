@@ -43,14 +43,10 @@ int isDivisible(int num,int k)
     return state;
 }
 
-
-
-
-
 int main()
 {
-    int num = 7;
-    int k = 15;
+    int num = 6;
+    int k = 3;
     
     int remainder = isDivisible(num,k);
     
