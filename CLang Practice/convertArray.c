@@ -1,5 +1,4 @@
-// A Dynamic Programming based program to check whether a string C is
-// an interleaving of two other strings A and B.
+
 #include <iostream>
 #include <string.h>
 using namespace std;
@@ -40,5 +39,5 @@ int main()
     int len = sizeof(arr)/sizeof(arr[0]);
     
     convertarray(arr,len);
-	return 0;
+    return 0;
 }
